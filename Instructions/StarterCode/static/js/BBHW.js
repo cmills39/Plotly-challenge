@@ -36,6 +36,42 @@ function createchart(sample){
     });
 }
 
+function bubblechart(sample){
+    d3.json("samples.json").then((data)=>{
+        var samples= data.samples;
+        var array= samples.filter(object =>object.id==sample);
+        var result= array [0];
+        var otu_ids= result.otu_ids;
+        var otu_labels=result.otu_labels;
+        var sample_values=result.sample_values;
+        var trace1= {
+            x:otu_ids,
+            y:sample_values,
+            text:otu_labels,
+            mode:'markers',
+            marker:sample_values,
+            color:otu_ids,
+            type:"bubble"
+
+        };
+        /*var bardata=[
+            {   
+               
+                text:otu_labels,
+                type:"bubble"
+
+            }
+        ];*/
+        var bubblelayout={
+            title:"BB bubble Chart Size Scaling",
+            showlegend: false,
+            height:600,
+            width: 600
+        };
+        Plotly.newPlot("bubble",trace1,bubblelayout);
+    });
+}
+
 
 function init(){
     var selectedID= d3.select("#selDataset");
