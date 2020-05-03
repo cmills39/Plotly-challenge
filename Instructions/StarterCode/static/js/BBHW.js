@@ -54,21 +54,15 @@ function bubblechart(sample){
             type:"bubble"
 
         };
-        /*var bardata=[
-            {   
-               
-                text:otu_labels,
-                type:"bubble"
-
-            }
-        ];*/
+        var bubbledata=[trace1];
+   
         var bubblelayout={
             title:"BB bubble Chart Size Scaling",
             showlegend: false,
             height:600,
             width: 600
         };
-        Plotly.newPlot("bubble",trace1,bubblelayout);
+        Plotly.newPlot("bubble",bubbledata,bubblelayout);
     });
 }
 
