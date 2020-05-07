@@ -49,9 +49,11 @@ function bubblechart(sample){
             y:sample_values,
             text:otu_labels,
             mode:'markers',
-            marker:sample_values,
+            marker:{
+                size:sample_values,
             color:otu_ids,
-            type:"bubble"
+            colorscale:"Earth"
+            }
 
         };
         var bubbledata=[trace1];
@@ -83,6 +85,7 @@ function init(){
         metadata(firstsample);
 
         createchart(firstsample);
+        bubblechart(firstsample);
 
 });
 }
@@ -92,5 +95,6 @@ init()
 function optionChanged(sample){
     metadata(sample);
     createchart(sample);
+    bubblechart(sample);
 }
 
